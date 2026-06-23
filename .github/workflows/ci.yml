@@ -1,0 +1,23 @@
+name: Validar Proyecto Integrador
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  verificar-archivos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos esenciales
+        run: |
+          test -f frontend/index.html
+          test -f backend/Dockerfile
+          test -f docker-compose.yml
+
+      - name: Mensaje de exito
+        run: echo "El proyecto cuenta con la estructura correcta exigida."
