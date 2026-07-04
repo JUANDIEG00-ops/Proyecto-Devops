@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./frontend:/usr/share/nginx/html
+      - sena-vol-frontend:/usr/share/nginx/html
     networks:
       - sena-network
 
@@ -17,6 +17,11 @@ services:
     networks:
       - sena-network
 
+
 networks:
   sena-network:
     driver: bridge
+
+volumes:
+  sena-vol-frontend:
+    driver: local
